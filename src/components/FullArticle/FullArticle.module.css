@@ -1,0 +1,222 @@
+.container{
+    margin: 26px auto auto ;
+    display: flex;
+    flex-direction: column;
+    width: 941px;
+    height: 540px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.another_wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.header{
+    display: flex;
+}
+
+.title_wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    padding-top: 15px;
+}
+
+.title{
+    color: #1890FF;
+    height: 25px;
+    padding-right: 13px;
+    flex-wrap: wrap;
+    font-size: 20px;
+    max-width: 160px;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.likes{
+    display: flex;
+    align-self: center;
+}
+
+.likes img{
+    width: 14px;
+    height: 14px;
+}
+
+.likes_count{
+    display: flex;
+    padding-left: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    align-items: center;
+}
+
+.tags_wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.tags{
+    display: flex;
+    flex-direction: row ;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    width: fit-content;
+    padding: 2px 3px;
+    margin-right: 5px;
+}
+
+.person_wrapper{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+.image{
+    margin-left: 12px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+
+.date{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.name{
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.description{
+    margin-left: 19px;
+    margin-top: 7px;
+    height: 45px;
+    font-size: 12px;
+    line-height: 22px;
+    font-family: 'Inter';
+    font-weight: 400;
+    display: flex;
+}
+
+.descriptionText{
+    max-width: 682px;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.75);
+    height: 45px;
+}
+
+.buttons{
+    display: flex;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.delete, .edit{
+    background-color: #FFFFFF;
+    height: 31px;
+    margin-right: 13px;
+}
+
+.edit{
+    text-decoration: none;
+    padding: 5px 18px;
+}
+
+.delete{
+    width: 78px;
+    color: #F5222D;
+    border: 1px solid #F5222D;
+    border-radius: 5px;
+    position: relative;
+}
+
+.modal{
+    width: 240px;
+    height: 104px;
+    background-color: white;
+    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.15));
+    position: absolute;
+    right: -160px;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal_title{
+    margin: 10px auto ;
+}
+
+.modal_buttons{
+    margin: 10px auto;
+}
+
+.modal_yes{
+    margin-left: 10px;
+}
+
+.modal_no{
+    background-color: #fff;
+    color: #595959;
+    border: 1px solid #595959;
+}
+
+.modal_no:hover{
+    background-color: #979696;
+}
+
+.delete:hover{
+   background-color: #e69a9e;
+   border-color: #e69a9e;
+}
+
+.edit:hover{
+    background-color: #0ff796;
+    border-color: #0ff796;
+}
+
+.edit{
+    width: 60px;
+    color: #52C41A;
+    border: 1px solid #52C41A;
+    border-radius: 5px;
+}
+
+.markownbody{
+    padding: 0 20px  ;
+}
+
+.likes{
+    display: flex;
+    align-self: center;
+}
+
+.likes img{
+    width: 14px;
+    height: 14px;
+}
+
+.likes_count{
+    display: flex;
+    padding-left: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    align-items: center;
+    margin-top: 1px;
+}
+
+.like_button{
+    background-color: #fff;
+    justify-content: center;
+    display: flex;
+    height: 14px;
+    width: 14px;
+}
+
+.like_button:hover{
+    background-color: rgb(219, 133, 147);
+}

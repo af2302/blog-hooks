@@ -1,0 +1,109 @@
+.name, .in , .up, .username{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.85)
+}
+
+.container{
+    height: 80px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.name{
+    margin-left: 22px;
+    text-decoration: none;
+}
+
+.name:hover, .username:hover{
+    color:rgb(94, 93, 93);
+}
+
+.wrapNoAuth , .wrap{
+    margin-left: auto;
+}
+
+.in, .up{
+    text-decoration: none;
+    padding: 15px;
+    width: 109px;
+    height: 51px;
+}
+
+.in:hover, .up:hover{
+    color: rgb(16, 87, 31);
+    border-color: rgb(16, 87, 31);
+}
+
+.in{
+    background-color: #fff;
+    border: 0;
+    margin-right: 20px;
+}
+
+.up{
+    margin-right: 22px;
+    background-color: #fff;
+    color: #52C41A;
+    border: 1px solid#52C41A;
+    border-radius: 5px;
+}
+
+.wrap{
+    display: flex;
+}
+
+.username{
+    align-self: center;
+    margin-right: 13px;
+}
+
+.profile{
+    margin:0px 27px ;
+    display: flex;
+    text-decoration: none;
+}
+
+.logout{
+    margin-right: 20px;
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 23px;
+}
+
+.logout:hover{
+    background-color: rgb(216, 59, 59);
+    color: rgb(109, 17, 17);
+    border-color: rgb(109, 17, 17);
+}
+
+.image{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.createArticle{
+    align-self: center;
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    color: #52C41A;
+    border: 1px solid #52C41A;
+    border-radius: 5px;
+    padding: 0px 10px ;
+    height: 35px;
+}
+
+.createArticle:hover{
+    color: #497234;
+    border-color: #497234;
+}

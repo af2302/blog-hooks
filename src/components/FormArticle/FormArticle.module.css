@@ -1,0 +1,96 @@
+.wrapper{
+    width: 940px;
+    min-height: 700px;
+    margin: 40px auto;
+    background-color: #fff;
+    border: 1px solid #D9D9D9;
+    box-shadow: 0px 22px 106px rgba(0, 0, 0, 0.07),
+        0px 9.19107px 44.2843px rgba(0, 0, 0, 0.0503198),
+        0px 4.91399px 23.6765px rgba(0, 0, 0, 0.0417275),
+        0px 2.75474px 13.2728px rgba(0, 0, 0, 0.035),
+        0px 1.46302px 7.04911px rgba(0, 0, 0, 0.0282725),
+        0px 0.608796px 2.93329px rgba(0, 0, 0, 0.0196802);
+    border-radius: 6px;
+}
+
+.name{
+    color: #262626;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.title, .description, .text{
+    width:874px;
+}
+
+.form>div{
+    margin-top: 20px;
+}
+
+.form{
+    margin: 0px 32px;
+}
+
+.text{
+    height:170px;
+    max-width: 874px;
+    position: relative;
+    resize: none;
+}
+
+.tagsContainer{
+    display: flex;
+    align-items: center;
+    margin-bottom:  5px;
+}
+
+.delete{
+    margin: 0px 16px ;
+    border: 1px solid #F5222D;
+    border-radius: 4px;
+    width: 118px;
+    height: 40px;
+    background-color: #fff;
+    color: #F5222D;
+}
+
+.delete:hover{
+    background-color: rgb(231, 162, 162);
+    border: 1px solid #F5222D;
+}
+
+.tagsInput{
+    width: 300px;
+    height: 40px;
+    margin-top: -12px;
+}
+
+.tagsWrapper{
+    max-width: 53%;
+    position: relative;
+    min-height: 40px;
+}
+
+.add{
+    position: absolute;
+    right: -120px;
+    bottom: 0px;
+    border: 1px solid #1890FF;
+    color:  #1890FF;
+    border-radius: 4px; 
+    width: 136px;
+    height: 40px;
+    background-color: #fff;
+}
+
+.submit{
+    width: 320px;
+    height: 40px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
