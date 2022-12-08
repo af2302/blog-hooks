@@ -1,4 +1,3 @@
-import React from "react";
 import ArticleList from "../ArticleList";
 import styles from './Main.module.css'
 

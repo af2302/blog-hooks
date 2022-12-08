@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Profile.module.css"
 import { useForm,FormProvider } from "react-hook-form";
 import { object,string } from "yup";
@@ -7,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setCredentials } from "../../store/authSlice";
+import { useNavigate } from "react-router";
 
 
 const validationSchema = object().shape({
@@ -22,11 +22,10 @@ const validationSchema = object().shape({
 });
 
 const Profile = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const currState = useSelector((state) => state.auth);
-  console.log('currState', currState);
   const header = `${currState.token}`;
-  console.log('token', header)
   const formProviderProps = useForm({
     defaultValues: {
       username: `${currState.username}`,
@@ -53,6 +52,7 @@ const Profile = () => {
     .then((data) => { 
       dispatch(setCredentials(data.data));
     })
+    .then(navigate("/"))
   };
   return (
     <div className={styles.wrapper}>

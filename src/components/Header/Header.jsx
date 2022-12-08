@@ -1,9 +1,9 @@
-import React from "react";
 import { Outlet } from "react-router";
 import styles from './Header.module.css'
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../store/authSlice";
+import defImg from "../../img/profilePic.jpg"
 
 const Header = () => {
     const isAuth = !!useSelector((state) => state.auth.token)
@@ -22,7 +22,7 @@ const Header = () => {
                     <Link to={"/new-article"} className={styles.createArticle}> create article </Link>          
                     <Link to={"/profile"} className={styles.profile}> 
                         <div className={styles.username}>{name}</div>
-                        <img className={styles.image} alt="img" src={`${image}`}/>
+                        <img className={styles.image} alt="img" src={`${image ? image : defImg}`}/>
                     </Link>
                     <button className={styles.logout} onClick={() => submitHandler()}> Log Out </button>
                     </div>

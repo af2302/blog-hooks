@@ -1,5 +1,5 @@
 import { Pagination } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchArticles } from "../../store/blogSlice";
 import Article from "../Article/Article";

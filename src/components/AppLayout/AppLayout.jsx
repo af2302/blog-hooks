@@ -1,5 +1,3 @@
-import React from "react"
-
 import Header from '../Header'
 import SignUp from '../SignUp/SignUp';
 import SignIn from '../SignIn';

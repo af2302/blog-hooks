@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Article.module.css"
 import heart from "../../img/Vector.png"
 import redHeart from "../../img/redHeart.png"

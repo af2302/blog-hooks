@@ -1,4 +1,3 @@
-import React from "react";
 import { array, object,string } from "yup";
 import { useSelector } from "react-redux";
 import axios from "axios";

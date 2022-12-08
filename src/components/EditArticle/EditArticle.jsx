@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { array, object,string } from "yup";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -28,14 +28,15 @@ const EditArticle = (  ) => {
   const  { slug } = useParams();
   const [fullArticle, setFullArticle] = useState({});
 
-    async function getFullArticle(slug) {
-        await fetch(`https://blog.kata.academy/api/articles/${slug}`)
-            .then(res => res.json())
-            .then(data => setFullArticle(data) )
-    }
-    useEffect(() => {
-        getFullArticle(slug);
-    }, [slug])
+  async function getFullArticle(slug) {
+      await fetch(`https://blog.kata.academy/api/articles/${slug}`)
+          .then(res => res.json())
+          .then(data => setFullArticle(data) )
+  }
+  
+  useEffect(() => {
+      getFullArticle(slug);
+  }, [slug])
 
   const defaultValues = getDefaultValues(fullArticle);
   const currState = useSelector((state) => state.auth);

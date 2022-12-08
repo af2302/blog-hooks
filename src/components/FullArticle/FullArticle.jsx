@@ -1,4 +1,4 @@
-import React , { useEffect,useState } from "react";
+import { useEffect,useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../Loader"
 import { Link, useNavigate } from "react-router-dom";
@@ -82,6 +82,7 @@ const FullArticle = () => {
     const day = date.getDate();
 
     const tags=fullArticle?.tagList?.filter((tag) => tag) ;
+    const isItYours = currState?.username === fullArticle?.author?.username;
 
     return (
         <>
@@ -107,7 +108,7 @@ const FullArticle = () => {
                             </div>
                         </div>
                         <div className={styles.tags_wrapper}>
-                            {tags.map((tag, i) => {
+                            {tags?.map((tag, i) => {
                                 return (
                                     <div className={styles.tags} key={i}>
                                         {tag}
@@ -126,14 +127,14 @@ const FullArticle = () => {
                 </div>
                 <div className={styles.description}>
                    <div className={styles.descriptionText}> {fullArticle?.description}</div>
-                    <div className={styles.buttons}>
+                    { isItYours && <div className={styles.buttons}>
                         <button className={styles.delete} onClick={()=>setIsOpen(isOpen === false ? true : false)}>Delete</button>
                         <Link 
                         to={`/articles/${slug}/edit`} 
                         className={styles.edit} 
                         fullarticle={fullArticle} 
                         >Edit</Link>
-                    </div>
+                    </div>}
                     { isOpen && <div className={styles.modal}> 
                         <div className={styles.modal_title}> are you sure about this </div>
                             <div className={styles.modal_buttons}>

@@ -1,4 +1,3 @@
-import React from "react";
 import { useController, useFormContext  } from "react-hook-form";
 import styles from "./Input.module.css";
 

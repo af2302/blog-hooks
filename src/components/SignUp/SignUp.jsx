@@ -1,10 +1,9 @@
-import React from "react";
 import styles from "./SignUp.module.css"
 import { useForm,FormProvider } from "react-hook-form";
 import { object,string,ref, boolean } from "yup";
 import Input from "../Input/Input";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const validationSchema = object().shape({
@@ -17,6 +16,7 @@ const validationSchema = object().shape({
 });
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const formProviderProps = useForm({
     defaultValues: {
       username: "",
@@ -39,7 +39,7 @@ const SignUp = () => {
         password: data.password,
       }
     })
-      //нужно в стейт запихнуть все что есть токен, картинку ,  ? нужно ли
+      .then(navigate("/sign_in"))
       .catch((e) => {
         const errors = e.response.data;
 
