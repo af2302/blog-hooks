@@ -27,20 +27,25 @@ const EditArticle = (  ) => {
   const navigate = useNavigate();
   const  { slug } = useParams();
   const [fullArticle, setFullArticle] = useState({});
+  const defaultValues = getDefaultValues(fullArticle);
+  const currState = useSelector((state) => state.auth);
+  const header = `${currState.token}`;
 
   async function getFullArticle(slug) {
-      await fetch(`https://blog.kata.academy/api/articles/${slug}`)
-          .then(res => res.json())
-          .then(data => setFullArticle(data) )
-  }
-  
+    await fetch(`https://blog.kata.academy/api/articles/${slug}`)
+      .then(res => res.json())
+      .then((data) => {
+        setFullArticle(data);
+        if (currState.username !== data?.article?.author?.username) {
+          navigate('/')
+        } else return
+      })
+  }  
+
   useEffect(() => {
       getFullArticle(slug);
   }, [slug])
 
-  const defaultValues = getDefaultValues(fullArticle);
-  const currState = useSelector((state) => state.auth);
-  const header = `${currState.token}`;
 
   const onSubmit = (data) => {
     const tagList = data.tags.map((el) => el.value);

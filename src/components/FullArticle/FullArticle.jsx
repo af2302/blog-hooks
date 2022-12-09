@@ -38,9 +38,7 @@ const FullArticle = () => {
 
     const onDelete = () => {
         axios.delete(`https://blog.kata.academy/api/articles/${slug}`, {
-                headers: {
-                    'Authorization' : `Token ${header}`
-                }
+                headers: { 'Authorization' : `Token ${header}` }
             }
         )
         .then((res) => {
@@ -54,11 +52,7 @@ const FullArticle = () => {
     const like = () => {
         axios.post(`https://blog.kata.academy/api/articles/${slug}/favorite`,{
             slug : slug
-        }, {
-            headers: {
-                'Authorization': `Token ${header}`
-            }
-        }
+        }, { headers: { 'Authorization': `Token ${header}` } }
     )
     .then(setFullArticle((prev) => ({...prev, favorited : true})))
     .then(setFullArticle((prev) => ({...prev, favoritesCount :  fullArticle.favoritesCount + 1 })))
@@ -66,9 +60,7 @@ const FullArticle = () => {
 
     const unLike = () => {
         axios.delete(`https://blog.kata.academy/api/articles/${slug}/favorite` , {
-            headers: {
-                'Authorization': `Token ${header}`
-            }
+            headers: { 'Authorization': `Token ${header}` }
         })
         .then(setFullArticle((prev) => ({...prev, favorited : false})))
         .then(setFullArticle((prev) => ({...prev, favoritesCount :  fullArticle.favoritesCount - 1 })))
@@ -77,7 +69,7 @@ const FullArticle = () => {
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"];
     const date = new Date(fullArticle?.updatedAt);
-    const month = monthNames[date.getMonth()]
+    const month = monthNames[date.getMonth()];
     const year = date.getFullYear();
     const day = date.getDate();
 

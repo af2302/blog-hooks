@@ -3,9 +3,9 @@ import { useForm,FormProvider } from "react-hook-form";
 import { object,string} from "yup";
 import Input from "../Input/Input";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCredentials } from "../../store/authSlice";
 
 const validationSchema = object().shape({
@@ -13,11 +13,8 @@ const validationSchema = object().shape({
   password : string().required("Обязательное поле"),
 });
 const SignIn = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token)
-  const username = useSelector((state) => state.auth.username)
-  console.log('token',token)
-  console.log('username',username)
   const formProviderProps = useForm({
     defaultValues: {
       email: "",
@@ -32,8 +29,11 @@ const SignIn = () => {
         password : data.password
       }
     })
-    .then((data) => { 
-      dispatch(setCredentials(data.data));
+    .then((res) => { 
+      dispatch(setCredentials(res.data));
+      if (res.status === 200) {
+        navigate("/articles")
+      }
     })
     .catch((e)=>{
       const err = e?.response?.data;

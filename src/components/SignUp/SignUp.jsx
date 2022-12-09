@@ -29,9 +29,6 @@ const SignUp = () => {
 
 
   const onSubmit = data => {
-    console.log('DATA', data)
-    console.log("dannie", data.username, data.email, data.password)
-
     axios.post(`https://blog.kata.academy/api/users`, {
       user: {
         username: data.username,
