@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { array, object,string } from "yup";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import FormArticle from "../FormArticle/FormArticle";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
+import { putData } from "../../service/service";
 
 const validationSchema = object().shape({
   title: string().required("Обязательное поле"),
@@ -44,31 +44,20 @@ const EditArticle = (  ) => {
 
   useEffect(() => {
       getFullArticle(slug);
+// eslint-disable-next-line
   }, [slug])
 
 
   const onSubmit = (data) => {
     const tagList = data.tags.map((el) => el.value);
-    axios.put(`https://blog.kata.academy/api/articles/${slug}`, {
-      article: {
-        slug: slug,
-        title: data.title,
-        description: data.description,
-        body: data.text,
-        tagList: tagList
-      }
-    }, {
-      headers: {
-        "Authorization": `Token ${header}`
-      }
+    try {
+      putData(data, slug , header, tagList);
+      setTimeout(() => {
+        navigate('/');
+      },350)
+    } catch (error) {
+      throw new Error('Server Error while Editing article', error.message)      
     }
-    ).then((res) => {
-      if (res.status === 200){
-        navigate("/");
-      }
-    }
-    
-    )
   }
   return (
     <>

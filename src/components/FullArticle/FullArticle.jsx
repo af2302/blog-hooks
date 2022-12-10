@@ -3,13 +3,12 @@ import { useParams } from "react-router";
 import Loader from "../Loader"
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import axios from "axios";
-
 
 import styles from "./FullArticle.module.css";
 import redHeart from "../../img/redHeart.png";
 import heart from "../../img/Vector.png";
 import MarkdownBody from "../MarkdownBody/MarkdownBody";
+import { deleteArticle, deleteLike, postLike } from "../../service/service";
 
 const FullArticle = () => {
     const [fullArticle, setFullArticle] = useState({});
@@ -28,7 +27,7 @@ const FullArticle = () => {
         })
         .then(res => res.json())
         .then(data =>setFullArticle(data.article))
-        setTimeout(()=>{setISLoading(false);},500)
+        setTimeout(()=>{setISLoading(false)},500)
         } , 0)
     }
     useEffect(() => {
@@ -37,33 +36,32 @@ const FullArticle = () => {
     },[slug])
 
     const onDelete = () => {
-        axios.delete(`https://blog.kata.academy/api/articles/${slug}`, {
-                headers: { 'Authorization' : `Token ${header}` }
-            }
-        )
-        .then((res) => {
-            if ( res.status === 204){
-                navigate("/");
-            }
-          }
-        )
+        try {
+            deleteArticle( slug, header);
+            navigate("/");
+        } catch (e) {
+            throw new Error('deleting error', e.message)
+        }
     }
 
     const like = () => {
-        axios.post(`https://blog.kata.academy/api/articles/${slug}/favorite`,{
-            slug : slug
-        }, { headers: { 'Authorization': `Token ${header}` } }
-    )
-    .then(setFullArticle((prev) => ({...prev, favorited : true})))
-    .then(setFullArticle((prev) => ({...prev, favoritesCount :  fullArticle.favoritesCount + 1 })))
+        try {
+            postLike(slug, header);
+            setFullArticle((prev) => ({ ...prev, favorited: true }))
+            setFullArticle((prev) => ({ ...prev, favoritesCount: fullArticle.favoritesCount + 1 }))
+        } catch (e) {
+            throw new Error('like Error', e.message)
+        }
     }
 
     const unLike = () => {
-        axios.delete(`https://blog.kata.academy/api/articles/${slug}/favorite` , {
-            headers: { 'Authorization': `Token ${header}` }
-        })
-        .then(setFullArticle((prev) => ({...prev, favorited : false})))
-        .then(setFullArticle((prev) => ({...prev, favoritesCount :  fullArticle.favoritesCount - 1 })))
+        try {
+            deleteLike(slug, header);
+            setFullArticle((prev) => ({ ...prev, favorited: false }))
+            setFullArticle((prev) => ({ ...prev, favoritesCount: fullArticle.favoritesCount - 1 }))
+        } catch (e) {
+            throw new Error('dislike Error ', e.message)
+        }
     }
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -111,10 +109,10 @@ const FullArticle = () => {
                     </div>
                     <div className={styles.person_wrapper}>
                         <div className={styles.text_wrapper}>
-                            <div className={styles.name}>{fullArticle?.author.username}</div>
+                            <div className={styles.name}>{fullArticle?.author?.username}</div>
                             <div className={styles.date}>{month} {day}, {year}</div>
                         </div>
-                            <img className={styles.image} alt="img" src={fullArticle?.author.image} />
+                            <img className={styles.image} alt="img" src={fullArticle?.author?.image} />
                     </div>
                 </div>
                 <div className={styles.description}>

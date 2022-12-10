@@ -36,7 +36,9 @@ const SignUp = () => {
         password: data.password,
       }
     })
-      .then(navigate("/sign_in"))
+      .then(()=>{
+        navigate("/sign_in")
+      })
       .catch((e) => {
         const errors = e.response.data;
 

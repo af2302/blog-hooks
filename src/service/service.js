@@ -1,33 +1,40 @@
 import axios from "axios";
-import { useNavigate } from "react-router";
 
 
-
-const onSubmit = (data, slug , header) => {
-    
-    const tagList = data.tags.map((el) => el.value);
-    axios.put(`https://blog.kata.academy/api/articles/${slug}`, {
-      article: {
-        slug: slug,
-        title: data.title,
-        description: data.description,
-        body: data.text,
-        tagList: tagList
-      }
-    }, {
-      headers: {
-        "Authorization": `Token ${header}`
-      }
+export async function putData(data, slug, header, tags) {
+  await axios.put(`https://blog.kata.academy/api/articles/${slug}`, {
+    article: {
+      slug: slug,
+      title: data.title,
+      description: data.description,
+      body: data.text,
+      tagList: tags
     }
-    ).then((res) => {
-      if (res.status === 200){
-        useNavigate("/");
-      }
+  }, {
+    headers: {
+      "Authorization": `Token ${header}`
     }
-    
-    )
+  }
+  )
 }
 
+export async function deleteLike( slug, header) {
+  await axios.delete(`https://blog.kata.academy/api/articles/${slug}/favorite` , {
+    headers: { 'Authorization': `Token ${header}` }
+}) 
+}
 
+export async function postLike( slug, header ) {
+  await axios.post(`https://blog.kata.academy/api/articles/${slug}/favorite`,{
+    slug : slug
+}, { headers: { 'Authorization': `Token ${header}` } }
+)
+}
 
-export default onSubmit;
+export async function deleteArticle( slug, header ) {
+  await axios.delete(`https://blog.kata.academy/api/articles/${slug}`, {
+    headers: { 'Authorization' : `Token ${header}` }
+}
+)
+}
+
